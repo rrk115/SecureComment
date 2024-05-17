@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<style>
+/* Post Card Styles */
+.post-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+.post-header {
+  background-color: #f5f5f5;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.post-user {
+  display: flex;
+  align-items: center;
+}
+
+.post-user-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.post-user-name {
+  font-weight: bold;
+}
+
+.post-content {
+  padding: 10px;
+}
+
+.post-content p {
+  margin-bottom: 10px;
+}
+
+.post-image {
+  max-width: 100%;
+  height: auto;
+}
+
+.post-actions {
+  background-color: #f5f5f5;
+  padding: 10px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.post-comment-link {
+  color: #333;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+.post-comment-link i {
+  margin-right: 5px;
+}
+</style>
+
+
+
+
+
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Toxic Comment Detection</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="../static/assets/img/favicon.png" rel="icon">
+  <link href="../static/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="../static/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../static/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../static/assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../static/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../static/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="../static/assets/css/main.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: 
+  * Updated: Jul 27 2023 with Bootstrap v5.3.1
+  * Template URL: https://bootstrapmade.com/-bootstrap-business-website-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body style="background-color: #008374;">
+
+  <!-- ======= Header ======= -->
+  <section id="topbar" class="topbar d-flex align-items-center">
+    <div class="container d-flex justify-content-center justify-content-md-between">
+      <div class="contact-info d-flex align-items-center">
+        
+        
+      </div>
+      <div class="social-links d-none d-md-flex align-items-center">
+        <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+        <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+        <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+        <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></i></a>
+      </div>
+    </div>
+  </section><!-- End Top Bar -->
+
+  <header id="header" class="header d-flex align-items-center">
+
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+      <a href="index.html" class="logo d-flex align-items-center">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <!-- <img src="assets/img/logo.png" alt=""> -->
+        <h1>Toxic Comments</h1>
+      </a>
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a href="/ihome.html">Home</a></li>
+          <li><a href="/ap.html">Add Post</a></li>
+          <li><a href="/vc.html">Comments</a></li>
+          <li><a href="/profile.html">Profile</a></li>
+          <li><a href="/fb.html">Feedback</a></li>
+          <li><a href="/index">Logout</a></li>
+        </ul>
+      </nav><!-- .navbar -->
+
+      <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+      <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+
+    </div>
+  </header><!-- End Header -->
+  <!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+   <section id="hero" class="hero">
+    <div class="container position-relative">
+      <center>
+        <h1 style="
+          font-family: Arial, sans-serif;
+          font-size: 36px;
+          color: #333;
+          text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+          text-align: center;
+          padding: 20px;
+          background-color: #f2f2f2;
+          border-radius: 10px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        ">
+          Welcome {{ session['username'] }}
+        </h1>
+        {% if data %}
+
+
+  {% for a, b, c, d in data %}
+  <div class="post-card" style="width:50%">
+   <div class="post-header">
+     <div class="post-user">
+       <span class="post-user-name">{{ b }}</span>
+     </div>
+   </div>
+   <div class="post-content"> 
+     <img src="../static/post_images/{{ d }}" alt="Post Image" class="post-image">
+     <p style="color: black;">{{ c }}</p>
+   </div>
+   <div class="post-actions">
+     <a href="{{ url_for('vmm', user=b, post=c, pic=d) }}" class="post-comment-link">
+       <i class="bi bi-chat"></i> Comment
+     </a>
+   </div>
+  </div>
+  {% endfor %}
+  {% endif %}
+      </center>
+      
+    </div>
+<br><br><br><br>
+<br><br><br><br>   
+<br><br><br><br> 
+<br><br><br><br>
+    </div>
+  </section>
+  <!-- End Hero Section -->
+
+ 
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+
+
+</body>
+
+</html>
